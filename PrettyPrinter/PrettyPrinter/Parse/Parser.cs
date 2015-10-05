@@ -8,7 +8,6 @@ namespace Parse
 	{
 		private Scanner scanner;
 		public Nil emptyList = new Nil ();
-
 		public Parser(Scanner s) { scanner = s;}
 
 		public Node parseExp()
@@ -17,29 +16,34 @@ namespace Parse
 		}
 		private Node parseExp(Token tok)
 		{
-			if (tok.getType () == TokenType.LPAREN) {
-				//open paren
-				return parseRest(scanner.getNextToken ());
-
+			if (tok == null)
+				return null;
+			else if (tok.getType () == TokenType.LPAREN) {
+				return parseRest (scanner.getNextToken ());
 			} else if (tok.getType () == TokenType.FALSE) {
-				//#f
+				return new BoolLit (false);
 			} else if (tok.getType () == TokenType.TRUE) {
-				//#t 
+				return new BoolLit (true);
 			} else if (tok.getType () == TokenType.INT) {
-				//a number
+				return new IntLit (tok.getIntVal ());
 			} else if (tok.getType () == TokenType.IDENT) {
-				//an identifier
+				return new Ident (tok.getName ());
 			} else if (tok.getType () == TokenType.STRING) {
-				//a string
+				return new StringLit (tok.getStringVal ());
 			} else if (tok.getType () == TokenType.QUOTE) {
-				// a quote
-			} else  {
+				return new Cons (new Ident("'"), new Cons(parseExp(scanner.getNextToken(),null)));
+			} else if (tok.getType () == TokenType.DOT) {
+				Console.WriteLine("Unexpected Token: .");
+				return null;
+			}
+			else  
+			{
+				Console.WriteLine ("Token does not exist");
 				return null;
 			}
 		}
 		public Node parseRest()
 		{
-			
 		}	
 		private Node parseRest(Token tok)
 		{
