@@ -19,7 +19,7 @@ namespace Parse
 		private Node parseExp(Token tok)
 		{
 			if (tok == null)
-				return new Nil();
+				return emptyList;
 			else if (tok.getType () == TokenType.LPAREN) 
 			{
 				return parseRest ();
@@ -67,7 +67,7 @@ namespace Parse
 				return null;
 			if (tok.getType () == TokenType.RPAREN)
 			{
-				return new Nil();
+				return emptyList;
 			} 
 			else if (tok.getType () == TokenType.DOT) 
 			{

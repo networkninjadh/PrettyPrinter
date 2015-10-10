@@ -13,7 +13,7 @@ namespace Tree
 		{
 			car = a;
 			cdr = d;
-			parseList ();
+			form  = parseList ();
 		}
 		public override Node getCar()
 		{
@@ -53,11 +53,7 @@ namespace Tree
 			} else
 				return new Regular ();
 		}
-		public override bool isPair ()
-		{
-			return true;
-		}
-
+	
 		public override void print(int n)
 		{
 			form.print (this, n, false);

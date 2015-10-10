@@ -172,25 +172,20 @@ namespace Parse
 					int[] nums = new int[1000];
 					int i = 0;
 					int finalNum = 0; 
+					nums[i] = ch - '0';
+					i++;
 					while (true)
 					{
-						nums[i] = ch - '0';
-						i++;
-						ch = In.Read();
-						if (!isNumber(Convert.ToChar(ch)))
+						if (!isNumber(Convert.ToChar(In.Peek())))
 						{
-							Console.WriteLine();
-							Console.WriteLine("Non integer character will be ignored");
 							break;
-						}
-						else if (!isNumber(Convert.ToChar(In.Peek())))
+						} 
+						else if (isNumber(Convert.ToChar(In.Peek())))
 						{
-							nums[i] = ch -'0';
+							ch = In.Read();
 							i++;
-							break;
+							nums[i] = ch - '0';
 						}
-						else if (isWhiteSpace(Convert.ToChar(ch)))
-							break;
 					}
 					int power = i-1;
 					for (int j = 0;j<i;j++)
@@ -198,9 +193,9 @@ namespace Parse
 						finalNum = finalNum + nums[j] * Convert.ToInt32(Math.Pow (10, power));
 						power--;
 					}
-						return new IntToken(finalNum);
-				}
+					return new IntToken(finalNum);
 
+				}
 				// Identifiers
 				if (isInitial(Convert.ToChar(ch)))
 				{
