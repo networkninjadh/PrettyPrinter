@@ -22,6 +22,9 @@ namespace Tree
 		public override Node getCdr()
 		{
 			return this.cdr;
+		}public override bool isPair ()
+		{
+			return true;
 		}
 
 		Special parseList()
