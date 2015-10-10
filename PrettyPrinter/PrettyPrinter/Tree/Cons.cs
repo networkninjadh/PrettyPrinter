@@ -1,6 +1,5 @@
-﻿// Cons -- Parse tree node class for representing a Cons node
-
-using System;
+﻿using System;
+using Tokens;
 
 namespace Tree
 {
@@ -16,19 +15,40 @@ namespace Tree
 			cdr = d;
 			parseList ();
 		}
-
-		// parseList() 'parses' special forms, constructs an appropriate
-		// object of a subclass of Special, and stores a pointer to that 
-		// object in variable form. It would be possible to fully parse
-		// special forms at this point. Since this causes complications
-		// parseList only look at the car for selecting the appropriate
-		// object from the Special hierarchy and to leave the rest of 
-		// parsing up to the interpreter.
-
-		void parseList()
+		public override Node getCar()
 		{
-			// TODO: implement this function and any helper functions
-			// you might need.
+			return this.car;
+		}
+		public override Node getCdr()
+		{
+			return this.cdr;
+		}
+
+		Special parseList()
+		{
+
+			if (car.isSymbol ()) {
+				String name = car.getName ();
+				if (name == "quote")
+					return new Quote ();
+				else if (name == "lambda")
+					return new Lambda ();
+				else if (name == "if")
+					return new If ();
+				else if (name == "begin")
+					return new Begin ();
+				else if (name == "let")
+					return new Let ();
+				else if (name == "cond")
+					return new Cond ();
+				else if (name == "define")
+					return new Define ();
+				else if (name == "set")
+					return new Set ();
+				else
+					return new Regular ();
+			} else
+				return new Regular ();
 		}
 		public override bool isPair ()
 		{

@@ -1,4 +1,5 @@
 ﻿// Node -- Base class for parse tree node objects
+using System;
 
 namespace Tree
 {
@@ -40,12 +41,13 @@ namespace Tree
 		public virtual bool isNull  () { return false; }		// Nil
 		public virtual bool isPair  () { return false; }		// Cons
 
+		public virtual string getName() {return null;}
 		// TODO: Report an error in these default methods and implement them 
 		// in class Cons. After setCar, a Cons cell needs to be 'parsed' again
 		// using parseList.
-		public virtual Node getCar() { return null; }
-		public virtual Node getCdr() { return null; }
-		public virtual void setCar(Node a) {}
-		public virtual void setCdr(Node a) {}
+		public virtual Node getCar() { Console.WriteLine ("Wrong Function"); return null; }
+		public virtual Node getCdr() { Console.WriteLine ("Wrong Functions"); return null; }
+		public virtual void setCar(Node a) {Console.WriteLine ("Error Wrong Function");}
+		public virtual void setCdr(Node a) {Console.WriteLine ("Error Wring Function");}
 	}	
 }

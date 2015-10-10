@@ -12,13 +12,16 @@ namespace Tree
 		{
 			name = n;
 		}
+		public override string getName()
+		{
+			return name;
+		}
 		public override bool isSymbol()
 		{
 			return true;
 		}
 		public override void print(int n)
 		{
-			// There has to be a more efficeint way to print n spaces 
 			for (int i = 0; i < n; i++)
 				Console.Write (" ");
 			Console.Write (" ");

@@ -1,6 +1,8 @@
 ﻿using System;
 using Tokens;
 using Tree;
+using System.Runtime.Remoting.Messaging;
+using System.Linq.Expressions;
 
 namespace Parse
 {
@@ -17,22 +19,37 @@ namespace Parse
 		private Node parseExp(Token tok)
 		{
 			if (tok == null)
-				return null;
-			else if (tok.getType () == TokenType.LPAREN) {
-				return parseRest (scanner.getNextToken ());
-			} else if (tok.getType () == TokenType.FALSE) {
+				return new Nil();
+			else if (tok.getType () == TokenType.LPAREN) 
+			{
+				return parseRest ();
+			} 
+			else if (tok.getType () == TokenType.FALSE) 
+			{
 				return new BoolLit (false);
-			} else if (tok.getType () == TokenType.TRUE) {
+			} 
+			else if (tok.getType () == TokenType.TRUE) 
+			{
 				return new BoolLit (true);
-			} else if (tok.getType () == TokenType.INT) {
+			} 
+			else if (tok.getType () == TokenType.INT) 
+			{
 				return new IntLit (tok.getIntVal ());
-			} else if (tok.getType () == TokenType.IDENT) {
+			} 
+			else if (tok.getType () == TokenType.IDENT) 
+			{
 				return new Ident (tok.getName ());
-			} else if (tok.getType () == TokenType.STRING) {
+			} 
+			else if (tok.getType () == TokenType.STRING) 
+			{
 				return new StringLit (tok.getStringVal ());
-			} else if (tok.getType () == TokenType.QUOTE) {
-				return new Cons (new Ident("'"), new Cons(parseExp(scanner.getNextToken(),null)));
-			} else if (tok.getType () == TokenType.DOT) {
+			} 
+			else if (tok.getType () == TokenType.QUOTE) 
+			{
+				return new Cons (new Ident("'"),parseExp(scanner.getNextToken()));
+			} 
+			else if (tok.getType () == TokenType.DOT) 
+			{
 				Console.WriteLine("Unexpected Token: .");
 				return null;
 			}
@@ -42,11 +59,24 @@ namespace Parse
 				return null;
 			}
 		}
-		public Node parseRest()
+
+		private Node parseRest()
 		{
-		}	
-		private Node parseRest(Token tok)
-		{
+			Token tok = scanner.getNextToken ();
+			if (tok == null)
+				return null;
+			if (tok.getType () == TokenType.RPAREN)
+			{
+				return new Nil();
+			} 
+			else if (tok.getType () == TokenType.DOT) 
+			{
+				return new Cons (parseExp (), parseRest ());
+			}
+			else 
+			{
+				return new Cons (parseExp (tok), parseRest ());
+			}
 		}
 	}
 }

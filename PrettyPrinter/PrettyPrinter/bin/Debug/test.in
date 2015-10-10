@@ -1,1 +1,2 @@
 (define (add x h) (+ x y))
+(x 32)

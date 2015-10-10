@@ -79,7 +79,6 @@ namespace Parse
 			try
 			{
 				ch = In.Read();
-				// skip white space
 				if (isWhiteSpace(Convert.ToChar(ch)))
 				{
 					while (isWhiteSpace(Convert.ToChar(ch)))
@@ -87,7 +86,6 @@ namespace Parse
 						ch = In.Read();
 					}
 				}
-				// skip single line comments
 				if (ch == ';')
 				{
 					while (true)
@@ -185,6 +183,12 @@ namespace Parse
 							Console.WriteLine("Non integer character will be ignored");
 							break;
 						}
+						else if (!isNumber(Convert.ToChar(In.Peek())))
+						{
+							nums[i] = ch -'0';
+							i++;
+							break;
+						}
 						else if (isWhiteSpace(Convert.ToChar(ch)))
 							break;
 					}
@@ -205,7 +209,7 @@ namespace Parse
 					{
 						buf[i] = Convert.ToChar(ch);
 						i++;
-						if (!isSubsequent(Convert.ToChar(ch)))
+						if (!isSubsequent(Convert.ToChar(ch)) | !isSubsequent(Convert.ToChar(In.Peek())))
 							break;
 						ch = In.Read();
 					}
