@@ -6,14 +6,20 @@ namespace Tree
 {
 	public class Regular : Special
 	{
-		// TODO: Add any fields needed 
 
-		// TODO: Add an appropriate constructor.
 		public Regular() {}
 
 		public override void print(Node t, int n, bool p)
 		{
-			// TODO: Implenent this function.
+			for (int i = 0; i < n; i++) {
+				Console.WriteLine (' ');
+			}
+			if (!p) {
+				Console.WriteLine ('(');
+			}
+			t.getCar ().print (0);
+			Console.WriteLine (' ');
+			t.getCdr ().print (0, true);
 		}
 	}
 }

@@ -3,3 +3,8 @@
 /home/dhoward/Documents/Classes/CSC4101/PrettyPrinter/PrettyPrinter/bin/Debug/PrettyPrinter.exe
 /home/dhoward/Documents/Classes/CSC4101/PrettyPrinter/PrettyPrinter/obj/x86/Debug/PrettyPrinter.exe
 /home/dhoward/Documents/Classes/CSC4101/PrettyPrinter/PrettyPrinter/obj/x86/Debug/PrettyPrinter.exe.mdb
+/home/dhoward/PrettyPrinter/PrettyPrinter/PrettyPrinter/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/home/dhoward/PrettyPrinter/PrettyPrinter/PrettyPrinter/bin/Debug/PrettyPrinter.exe.mdb
+/home/dhoward/PrettyPrinter/PrettyPrinter/PrettyPrinter/bin/Debug/PrettyPrinter.exe
+/home/dhoward/PrettyPrinter/PrettyPrinter/PrettyPrinter/obj/x86/Debug/PrettyPrinter.exe
+/home/dhoward/PrettyPrinter/PrettyPrinter/PrettyPrinter/obj/x86/Debug/PrettyPrinter.exe.mdb
