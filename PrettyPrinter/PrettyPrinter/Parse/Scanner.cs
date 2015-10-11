@@ -189,7 +189,7 @@ namespace Parse
 					}
 					int power = i-1;
 					for (int j = 0;j<i;j++)
-					{
+					{ 
 						finalNum = finalNum + nums[j] * Convert.ToInt32(Math.Pow (10, power));
 						power--;
 					}
