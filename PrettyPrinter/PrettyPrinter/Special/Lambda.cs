@@ -34,5 +34,8 @@ namespace Tree
 			}
 			Console.WriteLine (')');
 		}
+		void printQuote(Node c, int n, bool p) {
+
+		}
 	}
 }

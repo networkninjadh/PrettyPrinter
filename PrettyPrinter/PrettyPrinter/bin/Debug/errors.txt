@@ -3,8 +3,10 @@ Unhandled Exception:
 System.OverflowException: Number overflow.
   at System.Convert.ToChar (Int32 value) [0x00000] in <filename unknown>:0 
   at Parse.Scanner.getNextToken () [0x00000] in <filename unknown>:0 
+  at Parse.Parser.parseExp () [0x00000] in <filename unknown>:0 
   at SPP.Main (System.String[] args) [0x00000] in <filename unknown>:0 
 [ERROR] FATAL UNHANDLED EXCEPTION: System.OverflowException: Number overflow.
   at System.Convert.ToChar (Int32 value) [0x00000] in <filename unknown>:0 
   at Parse.Scanner.getNextToken () [0x00000] in <filename unknown>:0 
+  at Parse.Parser.parseExp () [0x00000] in <filename unknown>:0 
   at SPP.Main (System.String[] args) [0x00000] in <filename unknown>:0 

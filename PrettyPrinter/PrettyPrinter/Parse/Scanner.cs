@@ -83,7 +83,7 @@ namespace Parse
 				{
 					while (isWhiteSpace(Convert.ToChar(ch)))
 					{
-						ch = In.Read();
+						return getNextToken();
 					}
 				}
 				if (ch == ';')
@@ -93,8 +93,7 @@ namespace Parse
 						ch = In.Read();
 						if (ch == '\n')
 						{
-							ch = In.Read();
-							break;
+							return getNextToken();
 						}
 					}
 				}
