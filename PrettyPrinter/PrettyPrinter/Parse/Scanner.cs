@@ -77,6 +77,8 @@ namespace Parse
 			try
 			{
 				ch = In.Read();
+				if (ch == -1)
+					return null;
 				if (isWhiteSpace(Convert.ToChar(ch)))
 				{
 					return getNextToken();
@@ -92,8 +94,7 @@ namespace Parse
 						}
 					}
 				}
-				if (ch == -1)
-					return null;
+
 				// Special characters
 				else if (ch == '\'')
 					return new Token(TokenType.QUOTE);
