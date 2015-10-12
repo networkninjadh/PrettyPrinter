@@ -2,8 +2,6 @@
 using System.IO;
 using Tokens;
 using Tree;
-using System.Globalization;
-using System.Collections;
 
 namespace Parse
 {
@@ -81,10 +79,7 @@ namespace Parse
 				ch = In.Read();
 				if (isWhiteSpace(Convert.ToChar(ch)))
 				{
-					while (isWhiteSpace(Convert.ToChar(ch)))
-					{
-						return getNextToken();
-					}
+					return getNextToken();
 				}
 				if (ch == ';')
 				{
@@ -173,27 +168,19 @@ namespace Parse
 					int finalNum = 0; 
 					nums[i] = ch - '0';
 					i++;
-					while (true)
+					while (isNumber(Convert.ToChar(In.Peek())))
 					{
-						if (!isNumber(Convert.ToChar(In.Peek())))
-						{
-							break;
-						} 
-						else if (isNumber(Convert.ToChar(In.Peek())))
-						{
-							ch = In.Read();
-							i++;
-							nums[i] = ch - '0';
-						}
+						ch = In.Read();
+						nums[i] = ch - '0';
+						i++;
 					}
 					int power = i-1;
 					for (int j = 0;j<i;j++)
-					{ 
+					{
 						finalNum = finalNum + nums[j] * Convert.ToInt32(Math.Pow (10, power));
 						power--;
 					}
 					return new IntToken(finalNum);
-
 				}
 				// Identifiers
 				if (isInitial(Convert.ToChar(ch)))
@@ -214,7 +201,6 @@ namespace Parse
 					buf[0] = Convert.ToChar(ch);
 					return new IdentToken(new string(buf,0,1));
 				}
-
 				// Illegal character
 				else
 				{

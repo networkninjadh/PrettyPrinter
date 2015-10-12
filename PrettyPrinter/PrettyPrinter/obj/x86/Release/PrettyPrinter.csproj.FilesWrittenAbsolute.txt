@@ -1,0 +1,5 @@
+/home/dhoward/PrettyPrinter/PrettyPrinter/PrettyPrinter/obj/x86/Release/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/home/dhoward/PrettyPrinter/PrettyPrinter/PrettyPrinter/bin/Release/PrettyPrinter.exe.mdb
+/home/dhoward/PrettyPrinter/PrettyPrinter/PrettyPrinter/bin/Release/PrettyPrinter.exe
+/home/dhoward/PrettyPrinter/PrettyPrinter/PrettyPrinter/obj/x86/Release/PrettyPrinter.exe
+/home/dhoward/PrettyPrinter/PrettyPrinter/PrettyPrinter/obj/x86/Release/PrettyPrinter.exe.mdb

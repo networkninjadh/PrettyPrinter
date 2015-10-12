@@ -1,6 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="PrettyPrinter/Parse/Scanner.cs">
+    <Files>
+      <File FileName="PrettyPrinter/Parse/Scanner.cs" Line="3" Column="3" />
+      <File FileName="PrettyPrinter/Parse/Parser.cs" Line="5" Column="5" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

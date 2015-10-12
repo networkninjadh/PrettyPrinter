@@ -21,8 +21,5 @@ namespace Tree
 				throw new ArgumentOutOfRangeException ("Syntax Error");
 			}
 		}
-		void printQuote(Node c, int n, bool p) {
-
-		}
 	}
 }

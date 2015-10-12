@@ -1,8 +1,6 @@
 ﻿using System;
 using Tokens;
 using Tree;
-using System.Runtime.Remoting.Messaging;
-using System.Linq.Expressions;
 
 namespace Parse
 {
@@ -46,7 +44,7 @@ namespace Parse
 			} 
 			else if (tok.getType () == TokenType.QUOTE) 
 			{
-				return new Cons (new Ident("'"),parseExp(scanner.getNextToken()));
+				return new Cons (new Ident("quote"),new Cons(parseExp(),emptyList));
 			} 
 			else if (tok.getType () == TokenType.DOT) 
 			{
