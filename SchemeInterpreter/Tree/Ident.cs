@@ -27,6 +27,11 @@ namespace Tree
         {
             return true;
         }
+        
+        public Node eval(Environment env) 
+        {
+           return env.lookup(this); 
+        }
     }
 }
 

@@ -28,5 +28,10 @@ namespace Tree
         {
             return true;
         }
+        
+        public Node eval(Environment env) 
+        {
+           return instance; 
+        }
     }
 }
