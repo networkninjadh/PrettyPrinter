@@ -35,6 +35,7 @@ namespace Tree
         // the type of a node and that extract some information.
 
         // These are implemented in the appropriate subclasses to return true.
+
         public virtual bool isBool()   { return false; }  // BoolLit
         public virtual bool isNumber() { return false; }  // IntLit
         public virtual bool isString() { return false; }  // StringLit
@@ -42,6 +43,15 @@ namespace Tree
         public virtual bool isNull()   { return false; }  // Nil
         public virtual bool isPair()   { return false; }  // Cons
         public virtual bool isProcedure()	{ return false; } // BuiltIn
+
+        public virtual bool isBool()      { return false; }  // BoolLit
+        public virtual bool isNumber()    { return false; }  // IntLit
+        public virtual bool isString()    { return false; }  // StringLit
+        public virtual bool isSymbol()    { return false; }  // Ident
+        public virtual bool isNull()      { return false; }  // Nil
+        public virtual bool isPair()      { return false; }  // Cons
+        public virtual bool isProcedure() { return false; }  // Built-In, Closure
+
 
         // Since C# does not have covariant override, it is not possible
         // for the getCar and getCdr methods to implement the interface
@@ -79,7 +89,7 @@ namespace Tree
             return "";
         }
         
-        public virtual void eval()
+        public virtual Node eval()
         {
             Console.Error.WriteLine("Error: Eval has not been implemented for this Node");
         }
