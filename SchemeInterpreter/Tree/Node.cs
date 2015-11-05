@@ -77,5 +77,10 @@ namespace Tree
         {
             return "";
         }
+        
+        public virtual void eval()
+        {
+            Console.Error.WriteLine("Error: Eval has not been implemented for this Node");
+        }
     }
 }
