@@ -25,8 +25,6 @@ namespace Tree
 
         public Node getSymbol()		{ return symbol; }
 
-        // TODO: The method isProcedure() should be defined in
-        // class Node to return false.
         public /* override */ bool isProcedure()	{ return true; }
 
         public override void print(int n)
