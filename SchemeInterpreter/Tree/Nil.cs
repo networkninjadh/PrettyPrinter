@@ -29,7 +29,7 @@ namespace Tree
             return true;
         }
         
-        public Node eval(Environment env) 
+        public Node eval(Node fun, Environment env) 
         {
            return instance; 
         }

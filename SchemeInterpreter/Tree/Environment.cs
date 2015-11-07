@@ -113,5 +113,10 @@ namespace Tree
         {
             // TODO: implement this function
         }
+        
+        public Node eval(Node fun, Environment env) 
+        {
+            Console.Error.WriteLine("Error: Environment Cannot be eval()"); ; 
+        }
     }
 }

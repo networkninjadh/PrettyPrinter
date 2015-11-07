@@ -47,5 +47,10 @@ namespace Tree
         {
             return new StringLit("Error: Closure.apply not yet implemented");
         }
+        
+        public Node eval(Node fun, Environment env) 
+        {
+            Console.Error.WriteLine("Error: Closure Cannot be eval()"); ; 
+        }
     }    
 }

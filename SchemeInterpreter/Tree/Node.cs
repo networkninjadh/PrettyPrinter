@@ -36,14 +36,6 @@ namespace Tree
 
         // These are implemented in the appropriate subclasses to return true.
 
-        public virtual bool isBool()   { return false; }  // BoolLit
-        public virtual bool isNumber() { return false; }  // IntLit
-        public virtual bool isString() { return false; }  // StringLit
-        public virtual bool isSymbol() { return false; }  // Ident
-        public virtual bool isNull()   { return false; }  // Nil
-        public virtual bool isPair()   { return false; }  // Cons
-        public virtual bool isProcedure()	{ return false; } // BuiltIn
-
         public virtual bool isBool()      { return false; }  // BoolLit
         public virtual bool isNumber()    { return false; }  // IntLit
         public virtual bool isString()    { return false; }  // StringLit
