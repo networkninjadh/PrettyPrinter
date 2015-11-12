@@ -25,7 +25,7 @@ namespace Tree
 
         public Node getSymbol()		{ return symbol; }
 
-        public /* override */ bool isProcedure()	{ return true; }
+        public bool isProcedure()	{ return true; }
 
         public override void print(int n)
         {

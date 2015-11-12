@@ -24,7 +24,7 @@ namespace Tree
         public Node getFun()		{ return fun; }
         public Environment getEnv()	{ return env; }
 
-        public /* override */ bool isProcedure()	{ return true; }
+        public override bool isProcedure()	{ return true; }
 
         public override void print(int n) {
             // there got to be a more efficient way to print n spaces
