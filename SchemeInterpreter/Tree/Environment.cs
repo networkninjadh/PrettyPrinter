@@ -128,7 +128,7 @@ namespace Tree
             Cons value = new Cons(val, null);
             Cons ident = new Cons(id, value);
             Cons root = new Cons(ident, frame);
-            This.frame = root;
+            this.frame = root;
         }
 
 
@@ -153,6 +153,7 @@ namespace Tree
         public Node eval(Node fun, Environment env) 
         {
             Console.Error.WriteLine("Error: Environment Cannot be eval()");
+            return Nil.getInstance();
         }
     }
 }

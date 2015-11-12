@@ -50,58 +50,71 @@ public class Scheme4101
         Node root;
 
         // Create the built-in environment
-        Tree.Environment biEnv = new Environment();
+        Tree.Environment biEnv = new Tree.Environment();
         
         // Built-In Binary Arithmetic Functions
         Ident funcName = new Ident("b+");
-            biEnv.define(name, new BuiltIn(name));
+            biEnv.define(funcName, new BuiltIn(funcName));
         funcName = new Ident("b-");
-            biEnv.define(name, new BuiltIn(name));
+            biEnv.define(funcName, new BuiltIn(funcName));
         funcName = new Ident("b*");
-            biEnv.define(name, new BuiltIn(name));
+            biEnv.define(funcName, new BuiltIn(funcName));
         funcName = new Ident("b/");
-            biEnv.define(name, new BuiltIn(name));
+            biEnv.define(funcName, new BuiltIn(funcName));
         funcName = new Ident("b=");
-            biEnv.define(name, new BuiltIn(name));
+            biEnv.define(funcName, new BuiltIn(funcName));
         funcName = new Ident("b<");
-            biEnv.define(name, new BuiltIn(name));
+            biEnv.define(funcName, new BuiltIn(funcName));
             
         // Built-In IO Functions
         funcName = new Ident("read");
-            biEnv.define(name, new BuiltIn(name));
+            biEnv.define(funcName, new BuiltIn(funcName));
         funcName = new Ident("write");
-            biEnv.define(name, new BuiltIn(name));
+            biEnv.define(funcName, new BuiltIn(funcName));
         funcName = new Ident("display");
-            biEnv.define(name, new BuiltIn(name));
+            biEnv.define(funcName, new BuiltIn(funcName));
         funcName = new Ident("newline");
-            biEnv.define(name, new BuiltIn(name));
+            biEnv.define(funcName, new BuiltIn(funcName));
             
         // Other Built-In Functions
         funcName = new Ident("car");
-            biEnv.define(name, new BuiltIn(name));
+            biEnv.define(funcName, new BuiltIn(funcName));
         funcName = new Ident("cdr");
-            biEnv.define(name, new BuiltIn(name));
+            biEnv.define(funcName, new BuiltIn(funcName));
         funcName = new Ident("set-car!");
-            biEnv.define(name, new BuiltIn(name));
+            biEnv.define(funcName, new BuiltIn(funcName));
         funcName = new Ident("set-cdr!");
-            biEnv.define(name, new BuiltIn(name));
+            biEnv.define(funcName, new BuiltIn(funcName));
         funcName = new Ident("symbol?");
-            biEnv.define(name, new BuiltIn(name));
+            biEnv.define(funcName, new BuiltIn(funcName));
         funcName = new Ident("number?");
-            biEnv.define(name, new BuiltIn(name));
+            biEnv.define(funcName, new BuiltIn(funcName));
         funcName = new Ident("null?");
-            biEnv.define(name, new BuiltIn(name));
+            biEnv.define(funcName, new BuiltIn(funcName));
         funcName = new Ident("pair?");
-            biEnv.define(name, new BuiltIn(name));
+            biEnv.define(funcName, new BuiltIn(funcName));
         funcName = new Ident("eq?");
-            biEnv.define(name, new BuiltIn(name));
+            biEnv.define(funcName, new BuiltIn(funcName));
         funcName = new Ident("procedure?");
-            biEnv.define(name, new BuiltIn(name));
+            biEnv.define(funcName, new BuiltIn(funcName));
 
         // TODO: Create Top-Level Environment
+        
+        Tree.Environment env = new Tree.Environment(biEnv);
+        
+        /* TEST CASE: VARIABLE DEFINITION (WORKS)
+            env.define(new Ident("x"), new IntLit(12));
+            Console.WriteLine("Finding 'x':");
+            env.lookup(new Ident("x")).print(0);
+        */
+        
+        // TEST CASE: BOOLEAN CHECKS
+            env.define(new Ident("x"), new IntLit(12));
+            bool status = env.lookup(new Ident("x")).isBool();
+            Console.WriteLine("Is 'x' a Boolean? " + status);
 
         // Read-eval-print loop
-
+        /*
         // TODO: print prompt and evaluate the expression
         root = (Node) parser.parseExp();
         while (root != null) 
@@ -109,7 +122,7 @@ public class Scheme4101
             root.eval(env).print(0);
             root = (Node) parser.parseExp();
         }
-
+        */
         return 0;
     }
 }

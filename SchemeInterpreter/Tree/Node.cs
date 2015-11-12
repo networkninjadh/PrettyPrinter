@@ -81,9 +81,10 @@ namespace Tree
             return "";
         }
         
-        public virtual Node eval()
+        public virtual Node eval(Node env)
         {
             Console.Error.WriteLine("Error: Eval has not been implemented for this Node");
+            return Nil.getInstance();
         }
         
          public virtual void apply ()

@@ -91,7 +91,7 @@ namespace Tree
         }
         
         // TODO
-        public Node eval(Node fun, Environment env)
+        public Node eval(Node exp, Environment env)
         {
             return form.eval(this, env);
         }

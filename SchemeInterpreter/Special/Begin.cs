@@ -12,6 +12,12 @@ namespace Tree
         {
             Printer.printBegin(t, n, p);
         }
+        
+        public override Node eval (Node exp, Environment env)
+        {
+            Console.Error.WriteLine("Error: Eval not implemented for Begin:Special");
+            return Nil.getInstance();
+        }
     }
 }
 

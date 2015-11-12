@@ -11,7 +11,7 @@ namespace Tree
     abstract public class Special
     {
         public abstract void print(Node t, int n, bool p);
-        public abstract Node eval(Environment env);
+        public abstract Node eval(Node exp, Environment env);
     }
 }
 

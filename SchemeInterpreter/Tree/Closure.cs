@@ -48,7 +48,8 @@ namespace Tree
         
         public Node eval(Node fun, Environment env) 
         {
-            Console.Error.WriteLine("Error: Closure Cannot be eval()"); ; 
+            Console.Error.WriteLine("Error: Closure Cannot be eval()");
+            return Nil.getInstance();
         }
     }    
 }

@@ -6,12 +6,19 @@ namespace Tree
 {
     public class Lambda : Special
     {
-	public Lambda() { }
-
-        public override void print(Node t, int n, bool p)
+        public Lambda() { }
+    
+            public override void print(Node t, int n, bool p)
+            {
+                Printer.printLambda(t, n, p);
+        }
+      
+        public override Node eval(Node exp, Environment env)
         {
-            Printer.printLambda(t, n, p);
-  	}
+            Console.Error.WriteLine("Error: Eval not implemented for Lambda:Special");
+            return Nil.getInstance();
+        }
+      
     }
 }
 

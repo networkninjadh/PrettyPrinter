@@ -53,27 +53,27 @@ namespace Tree
            //       args.car.car is Ident:Node of first
                 if (name.Equals("b+"))
                 {
-                    
+                    return Nil.getInstance();
                 }
                 if (name.Equals("b-"))
                 {
-                    //Method Body
+                    return Nil.getInstance();
                 }
                 if (name.Equals("b*"))
                 {
-                    //Method Body
+                    return Nil.getInstance();
                 }
                 if (name.Equals("b/"))
                 {
-                    //Method Body
+                    return Nil.getInstance();
                 }
                 if (name.Equals("b=")) // Integer Comparison Only
                 {
-                    //Method Body
+                    return Nil.getInstance();
                 }
                 if (name.Equals("b<")) // Integer Comparison Only
                 {
-                    //Method Body
+                    return Nil.getInstance();
                 }
                 
            // List Built-Ins Section
@@ -102,33 +102,37 @@ namespace Tree
            // Checks? Built-Ins Section (Single Argument)
                 if (name.Equals("symbol?"))
                 {
-                    return args.getCar().isSymbol();
+                    return BoolLit.getInstance(args.getCar().isSymbol());
                 }
                 if (name.Equals("number?"))
                 {
-                    return args.getCar().isNumber();
+                    return BoolLit.getInstance(args.getCar().isNumber());
                 }
                 if (name.Equals("null?"))
                 {
-                    return args.getCar().isNull();
+                    return BoolLit.getInstance(args.getCar().isNull());
                 }
                 if (name.Equals("pair?"))
                 {
-                    return args.getCar().isPair();
+                    return BoolLit.getInstance(args.getCar().isPair());
                 }
                 if (name.Equals("procedure?"))
                 {
-                    return args.getCar().isProcedure();
+                    return BoolLit.getInstance(args.getCar().isProcedure());
                 }
                 if (name.Equals("eq?"))
                 {
                     // TODO
+                    return Nil.getInstance();
                 }
+                
+            return Nil.getInstance();
     	}
         
         public Node eval(Node fun, Environment env) 
         {
-            Console.Error.WriteLine("Error: BuiltIn Cannot be eval()"); 
+            Console.Error.WriteLine("Error: BuiltIn Cannot be eval()");
+            return Nil.getInstance();
         }
     }    
 }
