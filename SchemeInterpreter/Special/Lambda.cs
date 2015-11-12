@@ -13,7 +13,7 @@ namespace Tree
                 Printer.printLambda(t, n, p);
         }
       
-        public override Node eval(Node exp, Environment env)
+        public override Node eval(Node env)
         {
             Console.Error.WriteLine("Error: Eval not implemented for Lambda:Special");
             return Nil.getInstance();

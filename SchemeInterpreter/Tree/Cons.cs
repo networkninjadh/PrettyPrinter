@@ -91,9 +91,9 @@ namespace Tree
         }
         
         // TODO
-        public Node eval(Node exp, Environment env)
+        public override Node eval(Node env)
         {
-            return form.eval(this, env);
+            return form.eval(env);
         }
     }
 }

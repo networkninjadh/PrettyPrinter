@@ -9,6 +9,7 @@ public class Scheme4101
 {
     public static int Main(string[] args)
     {
+        
         // Create scanner that reads from standard input
         Scanner scanner = new Scanner(Console.In);
         
@@ -22,7 +23,7 @@ public class Scheme4101
         // If command line option -d is provided, debug the scanner.
         if (args.Length == 1 && args[0].Equals("-d"))
         {
-            // Console.Write("Scheme 4101> ");
+            Console.Write("Scheme 4101> ");
             Token tok = scanner.getNextToken();
             while (tok != null)
             {
@@ -38,7 +39,7 @@ public class Scheme4101
                 else
                     Console.WriteLine();
 
-                // Console.Write("Scheme 4101> ");
+                Console.Write("Scheme 4101> ");
                 tok = scanner.getNextToken();
             }
             return 0;
@@ -48,9 +49,11 @@ public class Scheme4101
         TreeBuilder builder = new TreeBuilder();
         Parser parser = new Parser(scanner, builder);
         Node root;
+        Console.Error.WriteLine("Parser built");
 
         // Create the built-in environment
         Tree.Environment biEnv = new Tree.Environment();
+        Console.Error.WriteLine("Built-In Environment..");
         
         // Built-In Binary Arithmetic Functions
         Ident funcName = new Ident("b+");
@@ -97,10 +100,13 @@ public class Scheme4101
             biEnv.define(funcName, new BuiltIn(funcName));
         funcName = new Ident("procedure?");
             biEnv.define(funcName, new BuiltIn(funcName));
+            
+        Console.Error.WriteLine("All BI Functions Created!");
 
         // TODO: Create Top-Level Environment
         
         Tree.Environment env = new Tree.Environment(biEnv);
+        Console.Error.WriteLine("Top-Level Environment Created");
         
         /* TEST CASE: VARIABLE DEFINITION (WORKS)
             env.define(new Ident("x"), new IntLit(12));
@@ -108,21 +114,27 @@ public class Scheme4101
             env.lookup(new Ident("x")).print(0);
         */
         
-        // TEST CASE: BOOLEAN CHECKS
+        /* TEST CASE: BOOLEAN CHECKS
             env.define(new Ident("x"), new IntLit(12));
             bool status = env.lookup(new Ident("x")).isBool();
             Console.WriteLine("Is 'x' a Boolean? " + status);
+        */
 
         // Read-eval-print loop
-        /*
         // TODO: print prompt and evaluate the expression
+        
+        //Parsing TEST
+        
+        
+        Console.Write("Scheme > ");
         root = (Node) parser.parseExp();
         while (root != null) 
         {
             root.eval(env).print(0);
+            Console.Write("Scheme > ");
             root = (Node) parser.parseExp();
         }
-        */
+        
         return 0;
     }
 }
