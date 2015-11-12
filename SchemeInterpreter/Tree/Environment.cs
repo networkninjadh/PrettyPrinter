@@ -137,7 +137,7 @@ namespace Tree
             // Use the Find function to get the Cons:Node whose Car is the current value, reassign Car to val Node (parameter)
             //   If Find returns null, then no such variable exists
         
-            Node temp = find(id, frame)
+            Node temp = find(id, frame);
             
             // Variable exists...
             if(temp != null)
