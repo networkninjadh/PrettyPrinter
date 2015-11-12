@@ -40,7 +40,7 @@ namespace Tree
         // Instead of Nil(), we use null to terminate the list.
 
         private Node frame;     	// the innermost scope, an assoc list
-	private Environment env;	// the enclosing environment
+	    private Environment env;	// the enclosing environment
    
         public Environment()
         {
@@ -148,6 +148,11 @@ namespace Tree
             
             // Else
             Console.Error.WriteLine("Error: Undefined Variable " + id.getName());
+        }
+        
+        public Node eval(Node fun, Environment env) 
+        {
+            Console.Error.WriteLine("Error: Environment Cannot be eval()"); ; 
         }
     }
 }

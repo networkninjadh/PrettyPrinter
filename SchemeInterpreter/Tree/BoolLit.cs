@@ -33,5 +33,10 @@ namespace Tree
         {
             return true;
         }
+        
+        public Node eval(Node fun, Environment env) 
+        {
+           return this; 
+        }
     }
 }

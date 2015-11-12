@@ -47,6 +47,11 @@ namespace Tree
         {
             return new StringLit("Error: BuiltIn.apply not yet implemented");
     	}
+        
+        public Node eval(Node fun, Environment env) 
+        {
+            Console.Error.WriteLine("Error: BuiltIn Cannot be eval()"); ; 
+        }
     }    
 }
 
