@@ -45,7 +45,85 @@ namespace Tree
         // BuiltIn and Closure.
         public /* override */ Node apply (Node args)
         {
-            return new StringLit("Error: BuiltIn.apply not yet implemented");
+           string name = symbol.getName();
+           
+           // Binary Arithmetic Section
+           //  Node args should be a (Regular)Cons:Node with properties:
+           //    args.car is a (Regular)Cons:Node
+           //       args.car.car is Ident:Node of first
+                if (name.Equals("b+"))
+                {
+                    
+                }
+                if (name.Equals("b-"))
+                {
+                    //Method Body
+                }
+                if (name.Equals("b*"))
+                {
+                    //Method Body
+                }
+                if (name.Equals("b/"))
+                {
+                    //Method Body
+                }
+                if (name.Equals("b=")) // Integer Comparison Only
+                {
+                    //Method Body
+                }
+                if (name.Equals("b<")) // Integer Comparison Only
+                {
+                    //Method Body
+                }
+                
+           // List Built-Ins Section
+                if (name.Equals("car"))
+                {
+                    // Call Cons.getCar() function on single parameter and return
+                    return args.getCar().getCar();
+                }
+                if (name.Equals("cdr"))
+                {
+                    // Call Cons.getCdr() function on single parameter and return
+                    return args.getCar().getCdr();
+                }
+                if (name.Equals("set-car!"))
+                {
+                    // Call Cons.setCar() function on first parameter, return Nil Node
+                    args.getCar().setCar(args.getCdr().getCar());
+                    return Nil.getInstance();
+                }
+                if (name.Equals("set-cdr!"))
+                {
+                    // Call Cons.setCdr() function on first parameter, return Nil Node
+                    args.getCar().setCdr(args.getCdr().getCar());
+                }
+                
+           // Checks? Built-Ins Section (Single Argument)
+                if (name.Equals("symbol?"))
+                {
+                    return args.getCar().isSymbol();
+                }
+                if (name.Equals("number?"))
+                {
+                    return args.getCar().isNumber();
+                }
+                if (name.Equals("null?"))
+                {
+                    return args.getCar().isNull();
+                }
+                if (name.Equals("pair?"))
+                {
+                    return args.getCar().isPair();
+                }
+                if (name.Equals("procedure?"))
+                {
+                    return args.getCar().isProcedure();
+                }
+                if (name.Equals("eq?"))
+                {
+                    // TODO
+                }
     	}
         
         public Node eval(Node fun, Environment env) 
