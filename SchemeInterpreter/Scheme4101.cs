@@ -49,8 +49,56 @@ public class Scheme4101
         Parser parser = new Parser(scanner, builder);
         Node root;
 
-        // TODO: Create and populate the built-in environment and
-        // create the top-level environment
+        // Create the built-in environment
+        Environment biEnv = new Environment();
+        
+        // Built-In Binary Arithmetic Functions
+        Ident funcName = new Ident("b+");
+            biEnv.define(name, new BuiltIn(name));
+        funcName = new Ident("b-");
+            biEnv.define(name, new BuiltIn(name));
+        funcName = new Ident("b*");
+            biEnv.define(name, new BuiltIn(name));
+        funcName = new Ident("b/");
+            biEnv.define(name, new BuiltIn(name));
+        funcName = new Ident("b=");
+            biEnv.define(name, new BuiltIn(name));
+        funcName = new Ident("b<");
+            biEnv.define(name, new BuiltIn(name));
+            
+        // Built-In IO Functions
+        funcName = new Ident("read");
+            biEnv.define(name, new BuiltIn(name));
+        funcName = new Ident("write");
+            biEnv.define(name, new BuiltIn(name));
+        funcName = new Ident("display");
+            biEnv.define(name, new BuiltIn(name));
+        funcName = new Ident("newline");
+            biEnv.define(name, new BuiltIn(name));
+            
+        // Other Built-In Functions
+        funcName = new Ident("car");
+            biEnv.define(name, new BuiltIn(name));
+        funcName = new Ident("cdr");
+            biEnv.define(name, new BuiltIn(name));
+        funcName = new Ident("set-car!");
+            biEnv.define(name, new BuiltIn(name));
+        funcName = new Ident("set-cdr!");
+            biEnv.define(name, new BuiltIn(name));
+        funcName = new Ident("symbol?");
+            biEnv.define(name, new BuiltIn(name));
+        funcName = new Ident("number?");
+            biEnv.define(name, new BuiltIn(name));
+        funcName = new Ident("null?");
+            biEnv.define(name, new BuiltIn(name));
+        funcName = new Ident("pair?");
+            biEnv.define(name, new BuiltIn(name));
+        funcName = new Ident("eq?");
+            biEnv.define(name, new BuiltIn(name));
+        funcName = new Ident("procedure?");
+            biEnv.define(name, new BuiltIn(name));
+
+        // TODO: Create Top-Level Environment
 
         // Read-eval-print loop
 
