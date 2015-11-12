@@ -13,7 +13,7 @@ namespace Tree
             Printer.printRegular(t, n, p);
         }
         
-        public override Node eval(Node fun, Node env)
+        public override Node eval(Node env)
         {
             return this;
         }
