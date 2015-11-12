@@ -50,7 +50,7 @@ public class Scheme4101
         Node root;
 
         // Create the built-in environment
-        Environment biEnv = new Environment();
+        Tree.Environment biEnv = new Environment();
         
         // Built-In Binary Arithmetic Functions
         Ident funcName = new Ident("b+");
