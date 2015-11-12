@@ -105,9 +105,9 @@ namespace Tree
 
         public void define(Node id, Node val)
         {
-            // TODO: Must add Nodes to the associated list of Nodes (Frame)
-            // ASSOCIATED LIST: Cons:Node as root, with Car as Cons:Node of first variable and Cdr as next Cons:Node "root"
-            //  **ALSO MUST CHECK to make sure that value doesn't already exist. Use Find function, if null then DNE, else reassign Car of returned node to the val Node (parameter)
+            // Must add Nodes to the associated list of Nodes (Frame)
+            //    ASSOCIATED LIST: Cons:Node as root, with Car as Cons:Node of first variable and Cdr as next Cons:Node "root"
+            //    **ALSO MUST CHECK to make sure that value doesn't already exist. Use Find function, if null then DNE, else reassign Car of returned node to the val Node (parameter)
             Node temp = find(id, frame);
             
             // Variable already exists... reassignment clause
@@ -118,7 +118,7 @@ namespace Tree
             }
             
             // Variable DOES NOT exist...
-            // Create new Cons:Node with the following state:
+            //   Create new Cons:Node with the following state:
             //      Cdr = old frame
             //      Car = Cons:Node with
             //              Car = Node id
@@ -134,8 +134,8 @@ namespace Tree
 
         public void assign(Node id, Node val)
         {
-            // TODO: Use the Find function to get the Cons:Node whose Car is the current value, reassign Car to val Node (parameter)
-            //         If Find returns null, then no such variable exists
+            // Use the Find function to get the Cons:Node whose Car is the current value, reassign Car to val Node (parameter)
+            //   If Find returns null, then no such variable exists
         
             Node temp = find(id, frame)
             
@@ -152,7 +152,7 @@ namespace Tree
         
         public Node eval(Node fun, Environment env) 
         {
-            Console.Error.WriteLine("Error: Environment Cannot be eval()"); ; 
+            Console.Error.WriteLine("Error: Environment Cannot be eval()");
         }
     }
 }
