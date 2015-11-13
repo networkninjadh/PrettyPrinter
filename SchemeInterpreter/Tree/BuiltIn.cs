@@ -153,13 +153,13 @@ namespace Tree
                 if (name.Equals("read")) 
                 {
 			         Parser parser;
-			         parser = new Parser(Console.in;
+			         parser = new Parser(new Scanner(Console.in));
 			         Node a = parser.parseExp();
 			         return a;
 		        }
                 if (symbolName.equals("write")) 
                 {
-			         args1.Print(0);
+			         args1.print(0);
 			         return new StrLit("");
 		        }
                 if (name.Equals("display")) 
