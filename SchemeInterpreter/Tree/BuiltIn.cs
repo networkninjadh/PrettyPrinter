@@ -153,7 +153,7 @@ namespace Tree
                 if (name.Equals("read")) 
                 {
 			         Parser parser;
-			         parser = new Parser(Console.ReadLine());
+			         parser = new Parser(Console.in;
 			         Node a = parser.parseExp();
 			         return a;
 		        }
