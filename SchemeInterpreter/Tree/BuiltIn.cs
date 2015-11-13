@@ -157,7 +157,7 @@ namespace Tree
 			         Node a = parser.parseExp();
 			         return a;
 		        }
-                if (symbolName.equals("write")) 
+                if (name.Equals("write")) 
                 {
 			         args1.print(0);
 			         return new StrLit("");
