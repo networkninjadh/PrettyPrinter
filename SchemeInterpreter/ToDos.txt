@@ -1,0 +1,18 @@
+Stuff Left To Do:
+
+	Remaining Special Case Evals
+		- Begin
+		- Cond
+		- If
+		- Let
+		- Set
+		
+	Remaining Built-In Functions
+		- Double Check IO Functions
+			- Read > ?
+			- Write > Works
+			- Display > Works
+			- Newline > Works
+			
+		- eq? boolean check
+			- Need to figure out pointer issues
