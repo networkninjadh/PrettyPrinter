@@ -136,7 +136,7 @@ public class Scheme4101
         // Prompt, Read, Eval, Print Loop
         while (root != null) 
             {
-                Node evalNode = root.eval(env);
+                Node evalNode = root.eval(root, env);
                 evalNode.print(0);
                     // Debug Section: Post-Eval
                         // Console.WriteLine();

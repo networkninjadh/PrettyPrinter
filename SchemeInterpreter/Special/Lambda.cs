@@ -13,7 +13,7 @@ namespace Tree
                 Printer.printLambda(t, n, p);
         }
       
-        public override Node eval(Node exp, Node env)
+        public override Node eval(Node exp, Environment env)
         {
             // Construct a Closure
             

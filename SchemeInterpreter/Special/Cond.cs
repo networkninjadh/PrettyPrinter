@@ -13,7 +13,7 @@ namespace Tree
             Printer.printCond(t, n, p);
         }
         
-        public override Node eval(Node exp, Node env)
+        public override Node eval(Node exp, Environment env)
         {
             Console.Error.WriteLine("Error: Eval not implemented for Cond:Special");
             return Nil.getInstance();

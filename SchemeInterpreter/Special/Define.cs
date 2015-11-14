@@ -27,7 +27,7 @@ namespace Tree
             Printer.printDefine(t, n, p);
         }
         
-        public override Node eval(Node exp, Node env)
+        public override Node eval(Node exp, Environment env)
         {
             Node root = exp;
             
@@ -40,7 +40,7 @@ namespace Tree
                 //    Console.WriteLine("Identifier Found!");
                 
                 Node resultIn = root.getCdr().getCdr().getCar();
-                Node resultOut = resultIn.eval(env);                // Calls Regular.eval()
+                Node resultOut = resultIn.eval(exp, env);                // Calls Regular.eval()
                 
                 //Test Line: WORKS
                 //    Console.WriteLine("Result: " + resultOut);

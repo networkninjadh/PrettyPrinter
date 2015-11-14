@@ -13,7 +13,7 @@ namespace Tree
             Printer.printQuote(t, n, p);
         }
         
-        public override Node eval(Node exp, Node env)
+        public override Node eval(Node exp, Environment env)
         {
             return exp.getCdr().getCar();
         }

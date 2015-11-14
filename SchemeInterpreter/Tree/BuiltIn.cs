@@ -14,6 +14,7 @@
 // the function symbol.
 
 using System;
+using System.Linq;
 using Parse;
 
 namespace Tree
@@ -43,22 +44,20 @@ namespace Tree
         // Node args - should contain a list of already eval'd elements
         public override Node apply (Node args)
         {
-           if (args == null)
-           {
-               return null;
-           } 
-           
-           string name = symbol.getName();
-           
-           Node arg1 = args.getCar();
-           if (arg1 == null || arg1.isNull())
-           {
-               arg1 = Nil.getInstance();
-           }
-           
-           // Binary Arithmetic Section
-           //  Node args should contain TWO IntLit Nodes
-           //  Values are located in [args.getCar()] and [args.getCdr().getCar()]
+            string[] bArith = {"b+", "b-", "b*", "b/", "b=", "b<"};
+            string name = symbol.getName();  
+            
+            // Binary Arithmetic Section
+            //  Node args should contain TWO IntLit Nodes
+            //  Values are located in [args.getCar()] and [args.getCdr().getCar()]
+            if(bArith.Contains(name))
+            {
+                if(!intArgCheck(args))
+                {
+                    return Nil.getInstance();
+                }
+                                                
+                // Local Vars
                 int val1 = args.getCar().getVal();
                 int val2 = args.getCdr().getCar().getVal();
            
@@ -92,8 +91,10 @@ namespace Tree
                     else
                         return BoolLit.getInstance(false);
                 }
+            }
                 
-           // List Built-Ins Section
+                
+            // List Built-Ins Section
                 if (name.Equals("car"))
                 {
                     // Call Cons.getCar() function on single parameter and return
@@ -116,7 +117,7 @@ namespace Tree
                     args.getCar().setCdr(args.getCdr().getCar());
                 }
                 
-           // Checks? Built-Ins Section (Single Argument)
+            // Checks? Built-Ins Section (Single Argument)
                 if (name.Equals("symbol?"))
                 {
                     return BoolLit.getInstance(args.getCar().isSymbol());
@@ -143,7 +144,7 @@ namespace Tree
                     return Nil.getInstance();
                 }
                 
-           // I/O functions read, write, display, newline
+            // I/O functions read, write, display, newline
                 if (name.Equals("read")) 
                 {
                      Scanner scanner = new Scanner(Console.In);
@@ -154,18 +155,18 @@ namespace Tree
 		        }
                 if (name.Equals("write")) 
                 {                    
-			         if(arg1 is StringLit)
+			         if(args.getCar() is StringLit)
                      {
-                         string withQuotes = "\"" + arg1.getStrVal() + "\"";
+                         string withQuotes = "\"" + args.getCar().getStrVal() + "\"";
                          return new StringLit(withQuotes);
                      }
                      
                      // Else
-                     return arg1;
+                     return args.getCar();
 		        }
                 if (name.Equals("display")) 
                 {
-			         return arg1;
+			         return args.getCar();
 		        }
                 if (name.Equals("newline")) 
                 {
@@ -176,7 +177,14 @@ namespace Tree
             return Nil.getInstance();
     	}
         
-        public override Node eval(Node env) 
+        // Helper Method for Binary Arihmetic
+        //  Returns TRUE if BOTH ARGS are VALID
+        private bool intArgCheck(Node args)
+        {
+            return (args.getCar().isNumber() && args.getCdr().getCar().isNumber());
+        }
+        
+        public override Node eval(Node exp, Environment env)  
         {
             Console.Error.WriteLine("Error: BuiltIn Cannot be eval()");
             return Nil.getInstance();
