@@ -38,12 +38,49 @@ namespace Tree
             Console.WriteLine('}');
         }
 
-        // TODO: The method apply() should be defined in class Node
-        // to report an error.  It should be overridden only in classes
-        // BuiltIn and Closure.
         public override Node apply (Node args)
         {
-            return new StringLit("Error: Closure.apply not yet implemented");
+            
+            // Must create new environment within which to execute
+                Environment funcEnv = new Environment(env);
+            
+            // Define param-arg pairs
+                Node parameters = this.fun.getCdr().getCar();
+                
+                Node paramPivot = parameters;
+                Node argsPivot = args;
+                
+                while(paramPivot != Nil.getInstance())
+                {
+                    // Not enough arguments for parameters 
+                        if(argsPivot == Nil.getInstance())
+                        {
+                            Console.Error.WriteLine("ERROR: Parameter Mismatch. Too few arguments.");
+                            return Nil.getInstance();
+                        }
+                    
+                    // Matching Pairs
+                        funcEnv.define(paramPivot.getCar(), argsPivot.getCar());
+                        Console.WriteLine();
+                        
+                    // Move both Pivots
+                        paramPivot = paramPivot.getCdr();
+                        argsPivot = argsPivot.getCdr();
+                }
+            
+                // Too many arguments for parameters
+                    if(argsPivot != Nil.getInstance())
+                    {
+                        Console.Error.WriteLine("ERROR: Parameter Mismatch. Too many arguments.");
+                        return Nil.getInstance();
+                    }
+            
+            // Execute function
+                Node body = fun.getCdr().getCdr().getCar();
+                
+                Node result = body.eval(body, funcEnv);
+                
+                return result;
         }
         
         public override Node eval(Node exp, Environment env) 

@@ -105,19 +105,6 @@ namespace Tree
 
         public void define(Node id, Node val)
         {
-            // Must add Nodes to the associated list of Nodes (Frame)
-            //    ASSOCIATED LIST: Cons:Node as root, with Car as Cons:Node of first variable and Cdr as next Cons:Node "root"
-            //    **ALSO MUST CHECK to make sure that value doesn't already exist. Use Find function, if null then DNE, else reassign Car of returned node to the val Node (parameter)
-            Node temp = find(id, frame);
-            
-            // Variable already exists... reassignment clause
-            if(temp != null)
-            {
-                temp.setCar(val);
-                return;
-            }
-            
-            // Variable DOES NOT exist...
             //   Create new Cons:Node with the following state:
             //      Cdr = old frame
             //      Car = Cons:Node with

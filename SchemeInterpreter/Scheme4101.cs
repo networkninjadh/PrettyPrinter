@@ -83,6 +83,8 @@ public class Scheme4101
                 biEnv.define(funcName, new BuiltIn(funcName));
             funcName = new Ident("cdr");
                 biEnv.define(funcName, new BuiltIn(funcName));
+            funcName = new Ident("cons");
+                biEnv.define(funcName, new BuiltIn(funcName));
             funcName = new Ident("set-car!");
                 biEnv.define(funcName, new BuiltIn(funcName));
             funcName = new Ident("set-cdr!");

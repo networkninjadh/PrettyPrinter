@@ -105,6 +105,11 @@ namespace Tree
                     // Call Cons.getCdr() function on single parameter and return
                     return args.getCar().getCdr();
                 }
+                if (name.Equals("cons"))
+                {
+                    // Create new Cons node, using two parameters
+                    return new Cons(args.getCar(), args.getCdr().getCar());
+                }
                 if (name.Equals("set-car!"))
                 {
                     // Call Cons.setCar() function on first parameter, return Nil Node

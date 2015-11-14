@@ -25,17 +25,31 @@ namespace Tree
                 }
             
             // Evaluate the provided params
-                Node evalArgs   = new Cons(Nil.getInstance(), Nil.getInstance()); // Initially Empty
                 Node paramPivot = exp.getCdr();
-                Node evalPivot  = evalArgs;
+                Node evalArgs;
+                Node evalPivot;
                 
+            //  If Function has no parameters, argument list is Nil
+                if(paramPivot == Nil.getInstance())
+                {
+                    return func.apply(Nil.getInstance());
+                }
+                
+            // Else begin eval and assignment
+            //  Initial Cons:Node is (Arg1 Value, Nil)
+                evalArgs = new Cons((paramPivot.getCar().eval(paramPivot.getCar(), env)), Nil.getInstance());
+                evalPivot = evalArgs;
+                paramPivot = paramPivot.getCdr();
+            
+            // Loop for additional args
                 while(paramPivot != Nil.getInstance())
-                {                    
-                    // Evaluate argument, set result as evalPivot Car
-                        evalPivot.setCar(paramPivot.getCar().eval(paramPivot.getCar(), env));
-                        
-                    // Create new empty Cons Node and set it as evalPivot Cdr
-                        evalPivot.setCdr(new Cons(Nil.getInstance(), Nil.getInstance()));
+                {
+                    // Create new Cons Node (ArgN Value, Nil)
+                    // Unnecessary storage, but prevents confusion
+                        Node temp = new Cons((paramPivot.getCar().eval(paramPivot.getCar(), env)), Nil.getInstance());
+                    
+                    // Set right-side as newly created Node                        
+                        evalPivot.setCdr(temp);
                     
                     // Move paramPivot one position down the right-edge of list
                         paramPivot = paramPivot.getCdr();
@@ -44,10 +58,8 @@ namespace Tree
                         evalPivot = evalPivot.getCdr();   
                 }
                 
-            // Make the function call using the evalArgs, store result (maybe not necessary to store)
-                Node result = func.apply(evalArgs);
-                
-            return result;
+            // Make the function call using the evalArgs, return result
+                return func.apply(evalArgs);
         }
     }
 }
