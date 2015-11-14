@@ -92,7 +92,7 @@ namespace Tree
             if (val == null && env == null)
             {
                 Console.Error.WriteLine("undefined variable " + id.getName());
-                return null;
+                return Nil.getInstance();
             }
             else if (val == null)
                 // look up the identifier in the enclosing scope
@@ -150,7 +150,7 @@ namespace Tree
             Console.Error.WriteLine("Error: Undefined Variable " + id.getName());
         }
         
-        public Node eval(Node fun, Environment env) 
+        public override Node eval(Node env) 
         {
             Console.Error.WriteLine("Error: Environment Cannot be eval()");
             return Nil.getInstance();

@@ -46,7 +46,7 @@ namespace Tree
             return new StringLit("Error: Closure.apply not yet implemented");
         }
         
-        public Node eval(Node fun, Environment env) 
+        public override Node eval(Node env) 
         {
             Console.Error.WriteLine("Error: Closure Cannot be eval()");
             return Nil.getInstance();

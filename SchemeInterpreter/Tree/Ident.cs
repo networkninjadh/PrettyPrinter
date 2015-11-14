@@ -28,9 +28,9 @@ namespace Tree
             return true;
         }
         
-        public Node eval(Node fun, Environment env) 
+        public override Node eval(Node env) 
         {
-           return env.lookup(this); 
+           return ((Environment)env).lookup(this); 
         }
     }
 }

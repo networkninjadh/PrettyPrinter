@@ -81,6 +81,19 @@ namespace Tree
             return "";
         }
         
+        //TEST METHOD
+        public virtual int getVal()
+        {
+            return -1;
+        }
+        
+        //TEST METHOD
+        public virtual Special getForm()
+        {
+            Console.Error.WriteLine("Not a Cons Node, No Special Form");
+            return null;
+        }
+        
         public virtual Node eval(Node env)
         {
             Console.Error.WriteLine("Error: Eval has not been implemented for this Node");

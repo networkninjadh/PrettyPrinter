@@ -128,12 +128,26 @@ public class Scheme4101
         
         Console.Write("Scheme > ");
         root = (Node) parser.parseExp();
+        
+        // TEST SECTION: Parse Tree Structure
+        /*    Console.WriteLine("ROOT: " + root.getForm());
+            Console.WriteLine("CAR: " + root.getCar().getName());
+            Console.WriteLine("CDR: " + root.getCdr().getForm());
+            Console.WriteLine("CADR: " + root.getCdr().getCar().getForm()); // Parameters
+            Console.WriteLine("CAADR: " + root.getCdr().getCar().getCar().getName()); // x
+            Console.WriteLine("CDDR: " + root.getCdr().getCdr().getForm());
+            Console.WriteLine("CADDR: " + root.getCdr().getCdr().getCar()); // Body
+            Console.WriteLine("CAADDR: " + root.getCdr().getCdr().getCar().getCar().getName()); // +
+        */
+        
         while (root != null) 
         {
-            root.eval(env).print(0);
+            Node evalNode = root.eval(env);
+            evalNode.print(0);
             Console.Write("Scheme > ");
             root = (Node) parser.parseExp();
         }
+        
         
         return 0;
     }

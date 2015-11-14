@@ -129,7 +129,7 @@ namespace Tree
             return Nil.getInstance();
     	}
         
-        public Node eval(Node fun, Environment env) 
+        public override Node eval(Node env) 
         {
             Console.Error.WriteLine("Error: BuiltIn Cannot be eval()");
             return Nil.getInstance();

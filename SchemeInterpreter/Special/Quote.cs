@@ -13,10 +13,9 @@ namespace Tree
             Printer.printQuote(t, n, p);
         }
         
-        public override Node eval(Node env)
+        public override Node eval(Node exp, Node env)
         {
-            Console.Error.WriteLine("Error: Eval not implemented for Quote:Special");
-            return Nil.getInstance();
+            return exp.getCdr().getCar();
         }
     }
 }

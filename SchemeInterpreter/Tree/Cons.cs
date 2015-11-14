@@ -90,10 +90,16 @@ namespace Tree
             return true;
         }
         
+        //TEST METHOD
+        public override Special getForm()
+        {
+            return form;
+        }
+        
         // TODO
         public override Node eval(Node env)
         {
-            return form.eval(env);
+            return form.eval(this, env);
         }
     }
 }

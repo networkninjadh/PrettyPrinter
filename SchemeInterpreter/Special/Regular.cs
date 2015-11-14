@@ -13,10 +13,9 @@ namespace Tree
             Printer.printRegular(t, n, p);
         }
         
-        public override Node eval(Node env)
+        public override Node eval(Node exp, Node env)
         {
-            Console.Error.WriteLine("Error: Eval has not been implemented for Regular:Special");
-            return Nil.getInstance();
+            return exp.getCar().eval(env);
         }
     }
 }
