@@ -45,7 +45,28 @@ namespace Tree
         // BuiltIn and Closure.
         public /* override */ Node apply (Node args)
         {
+           if (args == null)
+           {
+               return null;
+           } 
+           
            string name = symbol.getName();
+           
+           Node args1 = args.getCar();
+           if (args1 == null || args1.isNull())
+           {
+               args1 = new Nil();
+           }
+           
+           Node args2 = args.getCar();
+           if (args2 == null || args2.isNull())
+           {
+               args2 = new Nil();
+           }
+           else 
+           {
+               args2 = args2.getCar();
+           }
            
            // Binary Arithmetic Section
            //  Node args should be a (Regular)Cons:Node with properties:
@@ -123,8 +144,33 @@ namespace Tree
                 if (name.Equals("eq?"))
                 {
                     // TODO
+                   
+                    
                     return Nil.getInstance();
                 }
+                
+                // I/O functions read, write, display, newline
+                if (name.Equals("read")) 
+                {
+			         Parser parser;
+			         parser = new Parser(new Scanner(Console.in));
+			         Node a = parser.parseExp();
+			         return a;
+		        }
+                if (name.Equals("write")) 
+                {
+			         args1.print(0);
+			         return new StrLit("");
+		        }
+                if (name.Equals("display")) 
+                {
+			         return args1;
+		        }
+                if (name.Equals("newline")) 
+                {
+			         return new StrLit("", false)
+                }
+                
                 
             return Nil.getInstance();
     	}
