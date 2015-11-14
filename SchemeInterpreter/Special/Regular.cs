@@ -15,7 +15,11 @@ namespace Tree
         
         public override Node eval(Node exp, Node env)
         {
+            Console.WriteLine("Reached Regular Eval!");
             return exp.getCar().eval(env);
+            
+            // Evaluate all elements of the list
+            // Then call apply (using those as args)
         }
     }
 }

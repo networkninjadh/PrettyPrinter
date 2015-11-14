@@ -23,6 +23,11 @@ namespace Tree
             return true;
         }
         
+        public override string getStrVal()
+        {
+            return this.stringVal;
+        }
+        
         public override Node eval(Node env) 
         {
            return this; 

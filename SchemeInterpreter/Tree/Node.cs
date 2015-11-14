@@ -84,6 +84,7 @@ namespace Tree
         //TEST METHOD
         public virtual int getVal()
         {
+            Console.Error.WriteLine("Not an IntLit, No Int Value");
             return -1;
         }
         
@@ -94,15 +95,23 @@ namespace Tree
             return null;
         }
         
+        //TEST METHOD
+        public virtual string getStrVal()
+        {
+            Console.Error.WriteLine("Not a StringLit, No String Value");
+            return null;
+        }
+        
         public virtual Node eval(Node env)
         {
             Console.Error.WriteLine("Error: Eval has not been implemented for this Node");
             return Nil.getInstance();
         }
         
-         public virtual void apply ()
+         public virtual Node apply(Node args)
         {
             Console.Error.WriteLine("Error: Apply has not been implemented for this Node");
+            return Nil.getInstance();
     	}
     }
 }

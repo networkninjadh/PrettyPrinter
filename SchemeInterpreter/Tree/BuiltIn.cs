@@ -14,6 +14,7 @@
 // the function symbol.
 
 using System;
+using Parse;
 
 namespace Tree
 {
@@ -29,7 +30,6 @@ namespace Tree
 
         public override void print(int n)
         {
-            // there got to be a more efficient way to print n spaces
             for (int i = 0; i < n; i++)
                 Console.Write(' ');
             Console.Write("#{Built-in Procedure ");
@@ -40,10 +40,8 @@ namespace Tree
                 Console.WriteLine();
         }
 
-        // TODO: The method apply() should be defined in class Node
-        // to report an error.  It should be overridden only in classes
-        // BuiltIn and Closure.
-        public /* override */ Node apply (Node args)
+        // Node args - should contain a list of already eval'd elements
+        public override Node apply (Node args)
         {
            if (args == null)
            {
@@ -52,49 +50,47 @@ namespace Tree
            
            string name = symbol.getName();
            
-           Node args1 = args.getCar();
-           if (args1 == null || args1.isNull())
+           Node arg1 = args.getCar();
+           if (arg1 == null || arg1.isNull())
            {
-               args1 = new Nil();
-           }
-           
-           Node args2 = args.getCar();
-           if (args2 == null || args2.isNull())
-           {
-               args2 = new Nil();
-           }
-           else 
-           {
-               args2 = args2.getCar();
+               arg1 = Nil.getInstance();
            }
            
            // Binary Arithmetic Section
-           //  Node args should be a (Regular)Cons:Node with properties:
-           //    args.car is a (Regular)Cons:Node
-           //       args.car.car is Ident:Node of first
+           //  Node args should contain TWO IntLit Nodes
+           //  Values are located in [args.getCar()] and [args.getCdr().getCar()]
+                int val1 = args.getCar().getVal();
+                int val2 = args.getCdr().getCar().getVal();
+           
                 if (name.Equals("b+"))
                 {
-                    return Nil.getInstance();
+                    return new IntLit(val1 + val2);
                 }
                 if (name.Equals("b-"))
                 {
-                    return Nil.getInstance();
+                    return new IntLit(val1 - val2);
                 }
                 if (name.Equals("b*"))
                 {
-                    return Nil.getInstance();
+                    return new IntLit(val1 * val2);
                 }
                 if (name.Equals("b/"))
                 {
-                    return Nil.getInstance();
+                    return new IntLit(val1 / val2);
                 }
                 if (name.Equals("b=")) // Integer Comparison Only
                 {
-                    return Nil.getInstance();
+                    if(val1 == val2)
+                        return BoolLit.getInstance(true);
+                    else
+                        return BoolLit.getInstance(false);
                 }
                 if (name.Equals("b<")) // Integer Comparison Only
                 {
-                    return Nil.getInstance();
+                    if(val1 < val2)
+                        return BoolLit.getInstance(true);
+                    else
+                        return BoolLit.getInstance(false);
                 }
                 
            // List Built-Ins Section
@@ -144,31 +140,36 @@ namespace Tree
                 if (name.Equals("eq?"))
                 {
                     // TODO
-                   
-                    
                     return Nil.getInstance();
                 }
                 
-                // I/O functions read, write, display, newline
+           // I/O functions read, write, display, newline
                 if (name.Equals("read")) 
                 {
-			         Parser parser;
-			         parser = new Parser(new Scanner(Console.in));
-			         Node a = parser.parseExp();
+                     Scanner scanner = new Scanner(Console.In);
+                     TreeBuilder builder = new TreeBuilder();
+                     Parser parser = new Parser(scanner, builder);
+			         Node a = (Node)parser.parseExp();
 			         return a;
 		        }
                 if (name.Equals("write")) 
-                {
-			         args1.print(0);
-			         return new StrLit("");
+                {                    
+			         if(arg1 is StringLit)
+                     {
+                         string withQuotes = "\"" + arg1.getStrVal() + "\"";
+                         return new StringLit(withQuotes);
+                     }
+                     
+                     // Else
+                     return arg1;
 		        }
                 if (name.Equals("display")) 
                 {
-			         return args1;
+			         return arg1;
 		        }
                 if (name.Equals("newline")) 
                 {
-			         return new StrLit("", false)
+			         return new StringLit("\n");
                 }
                 
                 

@@ -39,7 +39,7 @@ namespace Tree
                 //Test Line: WORKS
                 //    Console.WriteLine("Identifier Found!");
                 
-                Node resultIn = root.getCdr().getCdr();
+                Node resultIn = root.getCdr().getCdr().getCar();
                 Node resultOut = resultIn.eval(env);                // Calls Regular.eval()
                 
                 //Test Line: WORKS
