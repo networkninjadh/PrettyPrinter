@@ -16,3 +16,5 @@ Stuff Left To Do:
 			
 		- eq? boolean check
 			- Need to figure out pointer issues
+			
+	Comment Cleanup
