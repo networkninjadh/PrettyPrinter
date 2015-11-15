@@ -15,8 +15,17 @@ namespace Tree
         
         public override Node eval (Node exp, Environment env)
         {
-            Console.Error.WriteLine("Error: Eval not implemented for Begin:Special");
-            return Nil.getInstance();
+            Node statement = exp;
+            Node nextStatement = statement.getCdr();
+            while (!nextStatement.isNull())
+            {
+                statement.getCdr().eval(statement, env);
+                statement = nextStatement;
+                nextStatement = nextStatement.getCdr();
+            }
+            return statement.getCar().eval(statement, env);
+            //Console.Error.WriteLine("Error: Eval not implemented for Begin:Special");
+            //return Nil.getInstance();
         }
     }
 }

@@ -15,6 +15,11 @@ namespace Tree
         {
             boolVal = b;
         }
+
+        public bool getBoolVal()
+        {
+            return boolVal;
+        }
   
         public static BoolLit getInstance(bool val)
         {
@@ -38,5 +43,4 @@ namespace Tree
         {
            return this; 
         }
-    }
 }

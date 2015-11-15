@@ -15,8 +15,22 @@ namespace Tree
         
         public override Node eval(Node exp, Environment env)
         {
-            Console.Error.WriteLine("Error: Eval not implemented for Cond:Special");
-            return Nil.getInstance();
+            Node node = exp.getCdr();
+            while((!(node.getCar()).getCar().eval(env).getBoolVal()) && (!node.isNull()))
+            {
+                node = node.getCdr();
+            }
+            if(node.isNull())
+            {
+                return new Nil();
+            }
+            else
+            {
+                return (node.getCar().getCdr().getCar().eval(env));
+            }
+
+            //Console.Error.WriteLine("Error: Eval not implemented for Cond:Special");
+            //return Nil.getInstance();
         }
     }
 }
