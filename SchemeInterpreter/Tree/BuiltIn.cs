@@ -163,19 +163,28 @@ namespace Tree
 			         if(args.getCar() is StringLit)
                      {
                          string withQuotes = "\"" + args.getCar().getStrVal() + "\"";
-                         return new StringLit(withQuotes);
+                         Node writeable = new StringLit(withQuotes);
+                         
+                         writeable.print(0);
+                     }
+                     else
+                     {
+                         args.getCar().print(0);
                      }
                      
-                     // Else
-                     return args.getCar();
+                     return Nil.getInstance();
 		        }
                 if (name.Equals("display")) 
                 {
-			         return args.getCar();
+                    args.getCar().print(0);
+			        return Nil.getInstance();
 		        }
                 if (name.Equals("newline")) 
                 {
-			         return new StringLit("\n");
+			        Node temp = new StringLit("\n");
+                    temp.print(0);
+                    
+                    return Nil.getInstance();
                 }
                 
             // Other Built-In Section

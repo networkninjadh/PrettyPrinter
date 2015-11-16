@@ -15,17 +15,19 @@ namespace Tree
         
         public override Node eval (Node exp, Environment env)
         {
-            Node statement = exp;
-            Node nextStatement = statement.getCdr();
-            while (!nextStatement.isNull())
+            Node statementRoot = exp.getCdr();
+            Node statementExpression = Nil.getInstance();
+            Node result = Nil.getInstance();
+            
+            while (statementRoot != Nil.getInstance())
             {
-                statement.getCdr().eval(statement, env);
-                statement = nextStatement;
-                nextStatement = nextStatement.getCdr();
+                statementExpression = statementRoot.getCar();
+                
+                result = statementExpression.eval(statementExpression, env);
+                statementRoot = statementRoot.getCdr();
             }
-            return statement.getCar().eval(statement, env);
-            //Console.Error.WriteLine("Error: Eval not implemented for Begin:Special");
-            //return Nil.getInstance();
+            
+            return result;
         }
     }
 }

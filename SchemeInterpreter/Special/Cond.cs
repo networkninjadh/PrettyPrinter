@@ -38,9 +38,6 @@ namespace Tree
                     Node expression = clauseRoot.getCar().getCdr().getCar();
                     return expression.eval(expression, env); 
                 }
-
-            //Console.Error.WriteLine("Error: Eval not implemented for Cond:Special");
-            //return Nil.getInstance();
         }
     }
 }
