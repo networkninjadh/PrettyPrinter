@@ -15,7 +15,7 @@ namespace Tree
         
         public override Node eval(Node exp, Environment env)
         {
-            // Target root of the first Cond clause
+            // Root of the First Clause
                 Node clauseRoot = exp.getCdr();
                 
             // And the "if" clause itself
@@ -25,6 +25,7 @@ namespace Tree
                 while((!(((BoolLit)clauseIf.eval(clauseIf, env)).getBoolVal())) && (clauseRoot != Nil.getInstance()))
                 {
                     clauseRoot = clauseRoot.getCdr();
+                    clauseIf = clauseRoot.getCar().getCar();
                 }
                 
             // clauseRoot is either a Nil Node or the true clause
