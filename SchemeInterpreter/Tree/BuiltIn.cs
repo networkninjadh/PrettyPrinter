@@ -42,7 +42,7 @@ namespace Tree
         }
 
         // Node args - should contain a list of already eval'd elements
-        public override Node apply (Node args)
+        public override Node apply (Node args, Environment env)
         {
             string[] bArith = {"b+", "b-", "b*", "b/", "b=", "b<"};
             string name = symbol.getName();  
@@ -149,7 +149,7 @@ namespace Tree
                     return Nil.getInstance();
                 }
                 
-            // I/O functions read, write, display, newline
+            // I/O Built-In Section
                 if (name.Equals("read")) 
                 {
                      Scanner scanner = new Scanner(Console.In);
@@ -176,6 +176,25 @@ namespace Tree
                 if (name.Equals("newline")) 
                 {
 			         return new StringLit("\n");
+                }
+                
+            // Other Built-In Section
+                if (name.Equals("interaction-environment"))
+                {
+                    // Trace environments until reaching Global (not Built-In)
+                    
+                    Environment current = env;
+                    Environment next = current.getParentEnv();
+                    
+                    // Loop breaks when "next" is the built-in Environment (whose env == null)
+                    //  Thus, current is the global Environment
+                    while(next.getParentEnv() != null)
+                    {
+                        current = next;
+                        next = current.getParentEnv();
+                    }
+                    
+                    return current;
                 }
                 
                 

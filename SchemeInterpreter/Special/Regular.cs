@@ -32,7 +32,7 @@ namespace Tree
             //  If Function has no parameters, argument list is Nil
                 if(paramPivot == Nil.getInstance())
                 {
-                    return func.apply(Nil.getInstance());
+                    return func.apply(Nil.getInstance(), env);
                 }
                 
             // Else begin eval and assignment
@@ -59,7 +59,7 @@ namespace Tree
                 }
                 
             // Make the function call using the evalArgs, return result
-                return func.apply(evalArgs);
+                return func.apply(evalArgs, env);
         }
     }
 }

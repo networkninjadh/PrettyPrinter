@@ -15,14 +15,13 @@ namespace Tree
 {
     public class Closure : Node
     {
-        private Node fun;		// a lambda expression
-        private Environment env;	// the environment in which
-                                        // the function was defined
+        private Node fun;		             // a lambda expression
+        private Environment containingEnv;	 // the environment in which the function was defined
 
-        public Closure(Node f, Environment e)	{ fun = f;  env = e; }
+        public Closure(Node f, Environment e)	{ fun = f;  containingEnv = e; }
 
         public Node getFun()		{ return fun; }
-        public Environment getEnv()	{ return env; }
+        public Environment getEnv()	{ return containingEnv; }
 
         public override bool isProcedure()	{ return true; }
 
@@ -38,11 +37,11 @@ namespace Tree
             Console.WriteLine('}');
         }
 
-        public override Node apply (Node args)
+        public override Node apply (Node args, Environment env)
         {
             
             // Must create new environment within which to execute
-                Environment funcEnv = new Environment(env);
+                Environment funcEnv = new Environment(containingEnv);
             
             // Define param-arg pairs
                 Node parameters = this.fun.getCdr().getCar();

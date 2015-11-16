@@ -108,7 +108,7 @@ namespace Tree
             return Nil.getInstance();
         }
         
-         public virtual Node apply(Node args)
+         public virtual Node apply(Node args, Environment env)
         {
             Console.Error.WriteLine("Error: Apply has not been implemented for this Node");
             return Nil.getInstance();

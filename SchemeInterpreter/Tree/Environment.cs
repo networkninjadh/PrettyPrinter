@@ -137,6 +137,11 @@ namespace Tree
             Console.Error.WriteLine("Error: Undefined Variable " + id.getName());
         }
         
+        public Environment getParentEnv()
+        {
+            return env;
+        }
+        
         public override Node eval(Node exp, Environment env)  
         {
             Console.Error.WriteLine("Error: Environment Cannot be eval()");
