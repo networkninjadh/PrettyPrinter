@@ -16,9 +16,9 @@ namespace Tree
         public override Node eval(Node exp, Environment env)
         {
             // Construct a Closure
+            Node lambdaRoot = new Cons(new Ident("lambda"), exp);
             
-            Console.Error.WriteLine("Error: Eval not implemented for Lambda:Special");
-            return Nil.getInstance();
+            return new Closure(lambdaRoot, env);
         }
       
     }

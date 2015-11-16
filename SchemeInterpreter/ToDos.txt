@@ -1,11 +1,12 @@
 Stuff Left To Do:
 
 	Remaining Special Case Evals
-		- Begin	>	Needs Test
-		- Cond	>	Works
-		- If	>	Works
-		- Let	>	Not Implemented
-		- Set	>	Not Implemented
+		- Begin		>	Works
+		- Cond		>	Works
+		- If		>	Works
+		- Let		>	Works
+		- Lambda	>	Works
+		- Set		>	Not Implemented
 		
 	Remaining Built-In Functions
 		- Double Check IO Functions

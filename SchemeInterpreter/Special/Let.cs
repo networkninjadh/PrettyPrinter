@@ -15,8 +15,26 @@ namespace Tree
         
         public override Node eval(Node exp, Environment env)
         {
-            Console.Error.WriteLine("Error: Eval not implemented for Let:Special");
-            return Nil.getInstance();
+            // Define new local Environment for the Let expression
+                Environment letEnv = new Environment(env);
+            
+            // Target relevant Nodes
+                Node rootVarList = exp.getCdr().getCar();
+                Node rootProcedure = exp.getCdr().getCdr().getCar();
+                
+            // Loop through Variables for definition
+                while (rootVarList != Nil.getInstance())
+                {
+                    // Construct a new Define:Special Node, and eval it :D
+                        Node currentDefine = new Cons(new Ident("define"), rootVarList.getCar());
+                        currentDefine.eval(currentDefine, letEnv);
+                    
+                    // Move rootVarList to the next variable
+                        rootVarList = rootVarList.getCdr();
+                }
+            
+            // Eval and return the Let's procedure
+                return rootProcedure.eval(rootProcedure, letEnv);
         }
     }
 }
