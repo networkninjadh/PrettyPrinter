@@ -15,7 +15,12 @@ namespace Tree
         
         public override Node eval(Node exp, Environment env)
         {
-            Console.Error.WriteLine("Error: Eval not implemented for Set:Special");
+            Node identity = exp.getCdr().getCar();
+            Node valueIdent = exp.getCdr().getCdr().getCar();
+            Node actualValue = valueIdent.eval(valueIdent, env);
+            
+            env.assign(identity, actualValue);
+            
             return Nil.getInstance();
         }
     }

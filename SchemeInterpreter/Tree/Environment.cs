@@ -121,20 +121,26 @@ namespace Tree
 
         public void assign(Node id, Node val)
         {
-            // Use the Find function to get the Cons:Node whose Car is the current value, reassign Car to val Node (parameter)
-            //   If Find returns null, then no such variable exists
-        
-            Node temp = find(id, frame);
+            // Use same approach as Lookup, except only assign rather than return
             
-            // Variable exists...
-            if(temp != null)
+            Node currentVal = find(id, frame);
+            if (currentVal == null && env == null)
             {
-                temp.setCdr(val);
+                Console.Error.WriteLine("undefined variable " + id.getName());
                 return;
             }
-            
-            // Else
-            Console.Error.WriteLine("Error: Undefined Variable " + id.getName());
+            else if (currentVal == null)
+            {
+                // attempt to find and assign the identifier in the enclosing scope
+                env.assign(id, val);
+                return;
+            }
+            else
+            {
+                // assign the value
+		        currentVal.setCar(val);
+                return;
+            }
         }
         
         public Environment getParentEnv()
