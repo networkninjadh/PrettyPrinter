@@ -145,8 +145,27 @@ namespace Tree
                 }
                 if (name.Equals("eq?"))
                 {
-                    // TODO
-                    return Nil.getInstance();
+                    // Ident Comparisons
+                    if(args.getCar() is Ident)
+                    {
+                        if(!(args.getCdr().getCar() is Ident))
+                            return BoolLit.getInstance(false);
+                        
+                        string name1 = args.getCar().getName();
+                        string name2 = args.getCdr().getCar().getName();
+                        
+                        if(name1 == name2)
+                            return BoolLit.getInstance(true);
+                        else
+                            return BoolLit.getInstance(false);
+                    }
+                    else
+                    {
+                        if(args.getCar() == args.getCdr().getCar())
+                            return BoolLit.getInstance(true);
+                        else
+                            return BoolLit.getInstance(false);
+                    }
                 }
                 
             // I/O Built-In Section
@@ -159,30 +178,27 @@ namespace Tree
 			         return a;
 		        }
                 if (name.Equals("write")) 
-                {                    
-			         if(args.getCar() is StringLit)
-                     {
-                         string withQuotes = "\"" + args.getCar().getStrVal() + "\"";
-                         Node writeable = new StringLit(withQuotes);
-                         
-                         writeable.print(0);
-                     }
-                     else
-                     {
-                         args.getCar().print(0);
-                     }
+                {
+                     args.getCar().print(0);
                      
                      return Nil.getInstance();
 		        }
                 if (name.Equals("display")) 
                 {
-                    args.getCar().print(0);
+                    if(args.getCar() is StringLit)
+                    {
+                        Console.WriteLine(((StringLit)args.getCar()).getStrVal());
+                    }
+                    else
+                    {
+                        args.getCar().print(0);
+                    }
+                    
 			        return Nil.getInstance();
 		        }
                 if (name.Equals("newline")) 
                 {
-			        Node temp = new StringLit("\n");
-                    temp.print(0);
+			        Console.WriteLine();
                     
                     return Nil.getInstance();
                 }

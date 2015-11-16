@@ -6,11 +6,11 @@ Stuff Left To Do:
 		- If		>	Works
 		- Let		>	Works
 		- Lambda	>	Works
-		- Set		>	Not Implemented
+		- Set		>	Works
 		
 	Remaining Built-In Functions
 		- Double Check IO Functions
-			- Read		> 	Needs Test
+			- Read		> 	Works
 			- Write 	> 	Works
 			- Display 	> 	Works
 			- Newline 	> 	Works
