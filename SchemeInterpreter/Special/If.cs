@@ -25,13 +25,13 @@ namespace Tree
             // cond3 not guarunteed to exist
             
             
-            if(((BoolLit)cond1.eval(env)).getBoolVal()) // Condition of the If exp is true
+            if(((BoolLit)cond1.eval(cond1, env)).getBoolVal()) // Condition of the If exp is true
             {
-                return cond2.eval(env);
+                return cond2.eval(cond2, env);
             } 
             else if (elseExists) // An else-clause exists:
             {
-                return cond3.eval(env);
+                return cond3.eval(cond3, env);
             }
             else // Condition is false and no else-clause
             {
