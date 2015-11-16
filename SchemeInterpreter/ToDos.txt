@@ -1,20 +1,19 @@
 Stuff Left To Do:
 
 	Remaining Special Case Evals
-		- Begin
-		- Cond
-		- If
-		- Let
-		- Set
+		- Begin	>	Needs Test
+		- Cond	>	Works
+		- If	>	Works
+		- Let	>	Not Implemented
+		- Set	>	Not Implemented
 		
 	Remaining Built-In Functions
 		- Double Check IO Functions
-			- Read > ?
-			- Write > Works
-			- Display > Works
-			- Newline > Works
+			- Read		> 	Needs Test
+			- Write 	> 	Works
+			- Display 	> 	Works
+			- Newline 	> 	Works
 			
-		- eq? boolean check
-			- Need to figure out pointer issues
+		- eq? boolean check		>	Not Implemented
 			
 	Comment Cleanup
